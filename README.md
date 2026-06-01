@@ -15,6 +15,14 @@ To write a program to find the LU Decomposition of a matrix.
 5. Display the matrices L and U.
 6. Verify that A = LU.
 
+
+## Algorithm
+1. Import the NumPy library and define the matrix A.
+2. Initialize the lower triangular matrix L and upper triangular matrix U with zeros.
+3. Compute the elements of U row by row.
+4. Compute the elements of L column by column and set the diagonal elements of L to 1.
+5. Display matrices L and U, and verify that A=LU.
+
 ## Program:
 (i) To find the L and U matrix
 ```
