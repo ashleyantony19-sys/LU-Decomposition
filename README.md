@@ -27,89 +27,47 @@ To write a program to find the LU Decomposition of a matrix.
 (i) To find the L and U matrix
 ```
 
-Program to find the L and U matrix.
-Developed by: Ashley Antony
+'''Program to find L and U matrix using LU decomposition.
+Developed by: ASHLEY ANTONY
 RegisterNumber: 212225220013
-
-import numpy as np
-
-A = np.array([[2, -1, -2],
-              [-4, 6, 3],
-              [-4, -2, 8]], dtype=float)
-
-n = len(A)
-
-L = np.zeros((n, n))
-U = np.zeros((n, n))
-
-for i in range(n):
-
-    # Upper Triangular Matrix
-    for k in range(i, n):
-        sum = 0
-        for j in range(i):
-            sum += (L[i][j] * U[j][k])
-
-        U[i][k] = A[i][k] - sum
-
-    # Lower Triangular Matrix
-    L[i][i] = 1
-
-    for k in range(i + 1, n):
-        sum = 0
-        for j in range(i):
-            sum += (L[k][j] * U[j][i])
-
-        L[k][i] = (A[k][i] - sum) / U[i][i]
-
-print("Lower Triangular Matrix L:")
+'''
+import os
+os.environ["OPENBLAS_NUM_THREADS"]="1"
+import numpy as np 
+from scipy.linalg import lu
+matrix = np.array(eval(input()))
+P,L,U=lu(matrix)
 print(L)
-
-print("\nUpper Triangular Matrix U:")
 print(U)
+
+
 ```
 (ii) To find the LU Decomposition of a matrix
 ```
-
-Program to find the LU Decomposition of a matrix.
-Developed by: Ashley Antony
+'''Program to solve a matrix using LU decomposition.
+Developed by: ASHLEY ANTONY
 RegisterNumber: 212225220013
-
-
+'''
+import os
+os.environ["OPENBLAS_NUM_THREADS"]="1"
+# To print X matrix (solution to the equations)
 import numpy as np
-A = np.array([[2, -1, -2],
-              [-4, 6, 3],
-                [-4, -2, 8]], dtype=float)
- n = len(A)
- L = np.zeros((n, n))
- U = np.zeros((n, n))
-for i in range(n):
-  for k in range(i, n):
-    total = 0
-      for j in range(i):
-            total += L[i][j] * U[j][k]
-            U[i][k] = A[i][k] - total
-            L[i][i] = 1
-for k in range(i + 1, n):
-    total = 0
-for j in range(i):
-    total += L[k][j] * U[j][i] L[k][i] = (A[k][i] - total) / U[i][i]
-print("Matrix A:")
-print(A)
-print("\nLower Matrix L:")
-print(L)
-print("\nUpper Matrix U:")
-print(U)
-print("\nLU Decomposition:")
-print(np.dot(L, U))
+from scipy.linalg import lu_factor,lu_solve
+A=np.array(eval(input()))
+B=np.array(eval(input()))
+lu,pivot=lu_factor(A)
+x=lu_solve((lu,pivot),B)
+print(x)
 ```
 
 ## Output:
 
+<img width="994" height="388" alt="WhatsApp Image 2026-06-01 at 9 37 21 AM" src="https://github.com/user-attachments/assets/689e5743-2b4a-4529-871e-abdc1b25043c" />
 
-<img width="377" height="363" alt="image" src="https://github.com/user-attachments/assets/46be8c74-d862-415f-968b-e5f1781f0064" />
 
 
+
+<img width="1035" height="166" alt="WhatsApp Image 2026-06-01 at 9 37 48 AM" src="https://github.com/user-attachments/assets/de6309a9-5669-40dd-8e6f-8989103fed68" />
 
 ## Result:
 Thus the program to find the LU Decomposition of a matrix is written and verified using python programming.
